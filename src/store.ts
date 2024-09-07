@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import type {} from "@redux-devtools/extension"; // required for devtools typing
+import _ from "lodash";
 
 export interface Meal {
   locked: boolean;
@@ -23,35 +24,32 @@ export interface AppState {
   reset: () => void;
 }
 
-const initialWeeklyMeals = (): WeeklyMeals => {
+const initWeeklyMeals = (): WeeklyMeals => {
   const emptyMeal: MealType = {
     Lunch: { locked: false, recipeName: "" },
     Dinner: { locked: false, recipeName: "" },
   };
 
   return {
-    Monday: emptyMeal,
-    Tuesday: emptyMeal,
-    Wednesday: emptyMeal,
-    Thursday: emptyMeal,
-    Friday: emptyMeal,
-    Saturday: emptyMeal,
-    Sunday: emptyMeal,
+    Monday: _.cloneDeep(emptyMeal),
+    Tuesday: _.cloneDeep(emptyMeal),
+    Wednesday: _.cloneDeep(emptyMeal),
+    Thursday: _.cloneDeep(emptyMeal),
+    Friday: _.cloneDeep(emptyMeal),
+    Saturday: _.cloneDeep(emptyMeal),
+    Sunday: _.cloneDeep(emptyMeal),
   };
 };
-
-// const reset = (state: AppState) => {
-
-// }
 
 const useStore = create<AppState>()(
   devtools(
     persist(
+      //@TODO: This is a very messy way to define this. Certainly there is a way to extract this?
       (set) => ({
-        meals: initialWeeklyMeals(),
+        meals: initWeeklyMeals(),
         reset: () => {
           set(() => ({
-            meals: initialWeeklyMeals(),
+            meals: initWeeklyMeals(),
           }));
         },
         toggleLock: (day: string, MealType: keyof MealType) =>
