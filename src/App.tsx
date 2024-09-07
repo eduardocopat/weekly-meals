@@ -1,45 +1,10 @@
-import { useState } from "react";
 import "./App.css";
-
-interface Meal {
-  locked: boolean;
-  recipeName: string;
-}
-
-interface MealType {
-  Lunch: Meal;
-  Dinner: Meal;
-}
-
-interface WeeklyMeals {
-  Monday: MealType;
-  Tuesday: MealType;
-  Wednesday: MealType;
-  Thursday: MealType;
-  Friday: MealType;
-  Saturday: MealType;
-  Sunday: MealType;
-}
-
-const createEmptyWeeklyMeals = (): WeeklyMeals => {
-  const emptyMeal: MealType = {
-    Lunch: { locked: false, recipeName: "" },
-    Dinner: { locked: false, recipeName: "" },
-  };
-
-  return {
-    Monday: emptyMeal,
-    Tuesday: emptyMeal,
-    Wednesday: emptyMeal,
-    Thursday: emptyMeal,
-    Friday: emptyMeal,
-    Saturday: emptyMeal,
-    Sunday: emptyMeal,
-  };
-};
+import useStore from "./store";
 
 function App() {
-  const [meals, setMeals] = useState(createEmptyWeeklyMeals());
+  const { meals, toggleLock } = useStore();
+
+  //@TODO: add key to each tr
 
   return (
     <>
@@ -55,7 +20,15 @@ function App() {
         <tbody>
           <tr>
             <td>Saturday</td>
-            <td>{meals.Saturday.Lunch.recipeName}</td>
+            <td>
+              {" "}
+              <input
+                type="checkbox"
+                checked={meals.Saturday.Lunch.locked}
+                onChange={() => toggleLock("Saturday", "Lunch")}
+              />
+              {meals.Saturday.Lunch.recipeName}
+            </td>
             <td>{meals.Saturday.Dinner.recipeName}</td>
           </tr>
           <tr>
