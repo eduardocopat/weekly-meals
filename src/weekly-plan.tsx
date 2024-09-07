@@ -16,12 +16,24 @@ export const weeklyPlan: WeeklyPlan = {
 
     const recipes = _.shuffle(allRecipes);
 
+    //@TODO: create a separate method to filter, because if there aren't any, then return an Empty recipe
     const weekendRecipes = recipes.filter((recipe) =>
+      //@TODO: move to constants
       recipe.Type.includes("weekend")
     );
 
-    //@TODO: create a separate method to filter, because if there aren't any, then return an Empty recipe
     meals["Saturday"].Lunch.recipeName = weekendRecipes[0].Name;
+
+    const mealPreps = recipes.filter((recipe) =>
+      //@TODO: move to constants
+      recipe.Type.includes("meal-prep")
+    );
+
+    meals["Monday"].Lunch.recipeName = mealPreps[0].Name;
+    //if has leftovers... blablabla
+    meals["Wednesday"].Lunch.recipeName = mealPreps[0].Name;
+    meals["Friday"].Lunch.recipeName = mealPreps[0].Name;
+
     setMeals(meals);
   },
 };

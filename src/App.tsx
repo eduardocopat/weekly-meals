@@ -38,7 +38,7 @@ function App() {
           <tr>
             <td>Saturday</td>
             <td>
-              {" "}
+              {"Lock: "}
               <input
                 type="checkbox"
                 checked={meals.Saturday.Lunch.locked}
