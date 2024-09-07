@@ -2,23 +2,25 @@ import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import type {} from "@redux-devtools/extension"; // required for devtools typing
 
-interface Meal {
+export interface Meal {
   locked: boolean;
   recipeName: string;
 }
 
-interface MealType {
+export interface MealType {
   Lunch: Meal;
   Dinner: Meal;
 }
 
-interface WeeklyMeals {
+export interface WeeklyMeals {
   [day: string]: MealType;
 }
 
-interface AppState {
+export interface AppState {
   meals: WeeklyMeals;
   toggleLock: (day: string, MealType: keyof MealType) => void;
+  setMeals: (meals: WeeklyMeals) => void;
+  reset: () => void;
 }
 
 const initialWeeklyMeals = (): WeeklyMeals => {
@@ -38,11 +40,20 @@ const initialWeeklyMeals = (): WeeklyMeals => {
   };
 };
 
+// const reset = (state: AppState) => {
+
+// }
+
 const useStore = create<AppState>()(
   devtools(
     persist(
       (set) => ({
         meals: initialWeeklyMeals(),
+        reset: () => {
+          set(() => ({
+            meals: initialWeeklyMeals(),
+          }));
+        },
         toggleLock: (day: string, MealType: keyof MealType) =>
           set((state) => ({
             meals: {
@@ -56,6 +67,7 @@ const useStore = create<AppState>()(
               },
             },
           })),
+        setMeals: (meals: WeeklyMeals) => set((state) => (state.meals = meals)),
       }),
       {
         name: "storage",

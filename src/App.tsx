@@ -1,14 +1,31 @@
+import { useEffect } from "react";
 import "./App.css";
 import useStore from "./store";
+import { weeklyPlan } from "./weekly-plan";
 
 function App() {
-  const { meals, toggleLock } = useStore();
+  const { meals, toggleLock, setMeals, reset } = useStore();
 
-  //@TODO: add key to each tr
+  useEffect(() => {
+    console.log("Component has mounted");
+
+    reset();
+  }, [reset]);
+
+  //@TODO: add key to each tr and create it dynamically
+
+  const generate = () => {
+    weeklyPlan.generate(meals, setMeals);
+  };
 
   return (
     <>
       <h1>Meals</h1>
+
+      <button onClick={generate}>Generate</button>
+
+      <br></br>
+
       <table border="1">
         <thead>
           <tr>
@@ -33,7 +50,12 @@ function App() {
           </tr>
           <tr>
             <td>Sunday</td>
-            <td>{meals.Sunday.Lunch.recipeName}</td>
+            <td>
+              <input
+                type="string"
+                value={meals.Sunday.Lunch.recipeName}
+              ></input>
+            </td>
             <td>{meals.Sunday.Dinner.recipeName}</td>
           </tr>
           <tr>
