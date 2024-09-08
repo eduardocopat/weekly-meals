@@ -1,4 +1,10 @@
-type RecipeType = "dinner" | "lunch" | "meal-prep" | "weekend" | "weekday";
+type RecipeType =
+  | "dinner"
+  | "lunch"
+  | "meal-prep"
+  | "weekend"
+  | "weekday"
+  | "friday";
 
 interface Recipe {
   Name: string;
@@ -11,6 +17,8 @@ const mealPrep: Recipe[] = [
   { Name: "Rice+Mince+Carrots", Type: ["meal-prep"], Yield: 6 },
   { Name: "Pasta+RedSauce+Corn", Type: ["meal-prep"], Yield: 4 },
   { Name: "Noodles+Tofu+Edamame", Type: ["meal-prep"], Yield: 4 },
+  { Name: "Pasta+CarneDePanela+Cenoura", Type: ["meal-prep"], Yield: 4 },
+  { Name: "Arroz+CarneDePanela+Cenoura", Type: ["meal-prep"], Yield: 6 },
   {
     Name: "ChickenCouscous+Feta+Cucumber+Oil+Balsamic",
     Type: ["meal-prep"],
@@ -34,6 +42,24 @@ const weekdays: Recipe[] = [
   },
 ];
 
-const allRecipes: Recipe[] = [...mealPrep, ...weekend, ...weekdays];
+const fridays: Recipe[] = [
+  { Name: "FrozenPizza", Type: ["friday"], Yield: 0 },
+  { Name: "VegetableSoup", Type: ["dinner"], Yield: 1 },
+  {
+    Name: "KumaraEnchilada(Beans+Corn)",
+    Type: ["dinner", "weekday"],
+    Yield: 0,
+  },
+];
+
+const anythingElse: Recipe[] = [];
+
+const allRecipes: Recipe[] = [
+  ...mealPrep,
+  ...weekend,
+  ...weekdays,
+  ...fridays,
+  ...anythingElse,
+];
 
 export default allRecipes;
