@@ -73,7 +73,7 @@ export const weeklyPlan: WeeklyPlan = {
     const dinnerRecipes = _.uniqBy(filterByType(recipes, "dinner"), "Type");
 
     let leftoversForWednesday = false;
-    let leftoversForThursday = false;
+
     if (monday.Dinner.locked === false) {
       monday.Dinner.recipeName = dinnerRecipes[0].Name;
       if (wednesday.Dinner.locked == false)
@@ -86,6 +86,7 @@ export const weeklyPlan: WeeklyPlan = {
     if (wednesday.Dinner.locked === false && !leftoversForWednesday)
       wednesday.Dinner.recipeName = dinnerRecipes[1].Name;
 
+    let leftoversForThursday = false;
     if (tuesday.Dinner.locked === false) {
       tuesday.Dinner.recipeName = dinnerRecipes[2].Name;
       if (thursday.Dinner.locked == false)

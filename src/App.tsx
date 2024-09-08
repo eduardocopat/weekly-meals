@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import "./App.css";
 import useStore, { MealType } from "./store";
 import { weeklyPlan } from "./weekly-plan";
 
@@ -7,8 +6,6 @@ function App() {
   const { meals, toggleLock, setMeals, reset } = useStore();
 
   useEffect(() => {
-    console.log("Component has mounted");
-
     reset();
   }, [reset]);
 
@@ -30,13 +27,18 @@ function App() {
 
   return (
     <>
-      <h1>Week meals</h1>
+      <div className="container">
+        <h1 className="title">Hello Bulma!</h1>
+        <button className="button is-primary">Click Me</button>
+      </div>
+
+      <h1 className="title">Week meals</h1>
 
       <button onClick={generate}>Generate</button>
       <br></br>
       <br></br>
 
-      <table border={1}>
+      <table>
         <thead>
           <tr>
             <th scope="col">Day</th>
