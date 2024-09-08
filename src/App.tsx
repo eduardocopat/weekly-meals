@@ -39,7 +39,7 @@ function App() {
             <br></br>
             <br></br>
 
-            <table className="table">
+            <table className="table is-fullwidth is-striped ">
               <thead>
                 <tr>
                   <th scope="col">Day</th>
@@ -55,42 +55,46 @@ function App() {
                     <tr key={key}>
                       <td>{key}</td>
                       <td>
-                        <input
-                          type="checkbox"
-                          checked={meal.Lunch.locked}
-                          onChange={() => toggleLock(key, "Lunch")}
-                        />
-                        <input
-                          type="text"
-                          className="input"
-                          value={meal.Lunch.recipeName}
-                          onChange={(event) => {
-                            handleManualNameChange(
-                              key,
-                              "Lunch",
-                              event.target.value
-                            );
-                          }}
-                        />
+                        <div className="is-flex">
+                          <input
+                            type="checkbox"
+                            checked={meal.Lunch.locked}
+                            onChange={() => toggleLock(key, "Lunch")}
+                          />
+                          <input
+                            type="text"
+                            className="input ml-2"
+                            value={meal.Lunch.recipeName}
+                            onChange={(event) => {
+                              handleManualNameChange(
+                                key,
+                                "Lunch",
+                                event.target.value
+                              );
+                            }}
+                          />
+                        </div>
                       </td>
                       <td>
-                        <input
-                          type="checkbox"
-                          checked={meal.Dinner.locked}
-                          onChange={() => toggleLock(key, "Dinner")}
-                        />
-                        <input
-                          type="text"
-                          className="input"
-                          value={meal.Dinner.recipeName}
-                          onChange={(event) => {
-                            handleManualNameChange(
-                              key,
-                              "Dinner",
-                              event.target.value
-                            );
-                          }}
-                        />
+                        <div className="is-flex">
+                          <input
+                            type="checkbox"
+                            checked={meal.Dinner.locked}
+                            onChange={() => toggleLock(key, "Dinner")}
+                          />
+                          <input
+                            type="text"
+                            className="input"
+                            value={meal.Dinner.recipeName}
+                            onChange={(event) => {
+                              handleManualNameChange(
+                                key,
+                                "Dinner",
+                                event.target.value
+                              );
+                            }}
+                          />
+                        </div>
                       </td>
                     </tr>
                   );
