@@ -50,12 +50,13 @@ const weekend: Recipe[] = [
 
 const weekdays: Recipe[] = [
   { Name: "VegetableSoup", Type: ["dinner"], Portions: 1 },
-  { Name: "Ravioli+Molho", Type: ["dinner"], Portions: 0 },
+  { Name: "Ravioli+Molho", Type: ["dinner"], Portions: 1 },
   {
     Name: "KumaraEnchilada(Beans+Corn)",
     Type: ["dinner", "weekday"],
-    Portions: 0,
+    Portions: 1,
   },
+  { Name: "Wrap('Fake pizza')", Type: ["dinner", "weekend"], Portions: 1 },
 ];
 
 const fridays: Recipe[] = [
