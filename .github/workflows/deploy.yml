@@ -11,8 +11,8 @@ on:
       - main # or your default branch
 
 jobs:
-  my-job:
-    name: my-job
+  deploy:
+    name: deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
