@@ -20,7 +20,7 @@ jobs:
 
       - run: bun install
       - run: bun run build
-      - id: build-publish
-        uses: bitovi/github-actions-react-to-github-pages@v1.2.4
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: dist # change to your build folder
+          folder: dist # The folder the action should deploy.
