@@ -1,17 +1,24 @@
 import { useEffect } from "react";
-import {useRecipes, type MealType } from "./RecipesProvider";
-import { weeklyPlan } from "./weekly-plan";
+import {RecipesProvider, useRecipes, type MealType } from "./RecipesProvider";
+import { useWeeklyPlan } from "./weekly-plan";
 
-function App() {
+const App = () => (
+  <RecipesProvider>
+    <WeeklyPLanner />
+  </RecipesProvider>
+);
+
+export default App;
+
+const WeeklyPLanner: React.FC = () => {
   const { meals, toggleLock, setMeals, reset } = useRecipes();
+
+  const generateWeeklyPlan = useWeeklyPlan();
 
   useEffect(() => {
     reset();
   }, [reset]);
 
-  const generate = () => {
-    weeklyPlan.generate(meals, setMeals);
-  };
 
   const handleManualNameChange = (
     key: string,
@@ -32,7 +39,7 @@ function App() {
           <div className="column is-half">
             <h1 className="title">Week meals</h1>
 
-            <button className="button is-light" onClick={generate}>
+            <button className="button is-light" onClick={()=> generateWeeklyPlan}>
               {" "}
               Generate
             </button>
@@ -59,8 +66,7 @@ function App() {
                           <input
                             type="checkbox"
                             checked={meal.Lunch.locked}
-                            onChange={() => toggleLock(key, "Lunch")}
-                          />
+                            onChange={() => toggleLock(key, "Lunch")} />
                           <input
                             type="text"
                             className="input ml-2"
@@ -71,8 +77,7 @@ function App() {
                                 "Lunch",
                                 event.target.value
                               );
-                            }}
-                          />
+                            } } />
                         </div>
                       </td>
                       <td>
@@ -80,8 +85,7 @@ function App() {
                           <input
                             type="checkbox"
                             checked={meal.Dinner.locked}
-                            onChange={() => toggleLock(key, "Dinner")}
-                          />
+                            onChange={() => toggleLock(key, "Dinner")} />
                           <input
                             type="text"
                             className="input"
@@ -92,8 +96,7 @@ function App() {
                                 "Dinner",
                                 event.target.value
                               );
-                            }}
-                          />
+                            } } />
                         </div>
                       </td>
                     </tr>
@@ -106,6 +109,5 @@ function App() {
       </div>
     </>
   );
-}
+};
 
-export default App;
