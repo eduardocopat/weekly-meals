@@ -1,24 +1,17 @@
 import { useEffect } from "react";
-import {RecipesProvider, useRecipes, type MealType } from "./RecipesProvider";
-import { useWeeklyPlan } from "./weekly-plan";
+import useStore, { MealType } from "./store";
+import { weeklyPlan } from "./weekly-plan";
 
-const App = () => (
-  <RecipesProvider>
-    <WeeklyPLanner />
-  </RecipesProvider>
-);
-
-export default App;
-
-const WeeklyPLanner: React.FC = () => {
-  const { meals, toggleLock, setMeals, reset } = useRecipes();
-
-  const generateWeeklyPlan = useWeeklyPlan();
+function App() {
+  const { meals, toggleLock, setMeals, reset } = useStore();
 
   useEffect(() => {
     reset();
   }, [reset]);
 
+  const generate = () => {
+    weeklyPlan.generate(meals, setMeals);
+  };
 
   const handleManualNameChange = (
     key: string,
@@ -39,7 +32,7 @@ const WeeklyPLanner: React.FC = () => {
           <div className="column is-half">
             <h1 className="title">Week meals</h1>
 
-            <button className="button is-light" onClick={()=> generateWeeklyPlan}>
+            <button className="button is-light" onClick={generate}>
               {" "}
               Generate
             </button>
@@ -66,7 +59,8 @@ const WeeklyPLanner: React.FC = () => {
                           <input
                             type="checkbox"
                             checked={meal.Lunch.locked}
-                            onChange={() => toggleLock(key, "Lunch")} />
+                            onChange={() => toggleLock(key, "Lunch")}
+                          />
                           <input
                             type="text"
                             className="input ml-2"
@@ -77,7 +71,8 @@ const WeeklyPLanner: React.FC = () => {
                                 "Lunch",
                                 event.target.value
                               );
-                            } } />
+                            }}
+                          />
                         </div>
                       </td>
                       <td>
@@ -85,7 +80,8 @@ const WeeklyPLanner: React.FC = () => {
                           <input
                             type="checkbox"
                             checked={meal.Dinner.locked}
-                            onChange={() => toggleLock(key, "Dinner")} />
+                            onChange={() => toggleLock(key, "Dinner")}
+                          />
                           <input
                             type="text"
                             className="input"
@@ -96,7 +92,8 @@ const WeeklyPLanner: React.FC = () => {
                                 "Dinner",
                                 event.target.value
                               );
-                            } } />
+                            }}
+                          />
                         </div>
                       </td>
                     </tr>
@@ -109,5 +106,6 @@ const WeeklyPLanner: React.FC = () => {
       </div>
     </>
   );
-};
+}
 
+export default App;
