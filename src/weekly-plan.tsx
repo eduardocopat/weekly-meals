@@ -26,7 +26,7 @@ export const weeklyPlan: WeeklyPlan = {
 
     if (saturday.Lunch.locked === false) {
       saturday.Lunch.recipeName = weekendLunchRecipes[0].Name;
-      if (weekendLunchRecipes[0].Yield > 0)
+      if (weekendLunchRecipes[0].Portions > 0)
         if (sunday.Lunch.locked === false)
           sunday.Lunch.recipeName = weekendLunchRecipes[0].Name;
     }
@@ -36,13 +36,20 @@ export const weeklyPlan: WeeklyPlan = {
 
     if (saturday.Dinner.locked === false) {
       saturday.Dinner.recipeName = weekendDinnerRecipes[0].Name;
-      if (weekendDinnerRecipes[0].Yield > 0)
+      if (weekendDinnerRecipes[0].Portions > 0)
         if (sunday.Dinner.locked === false)
           sunday.Dinner.recipeName = weekendDinnerRecipes[0].Name;
     }
 
     if (sunday.Dinner.locked === false)
       sunday.Dinner.recipeName = weekendDinnerRecipes[0].Name;
+    //#endregion
+
+    //#region mealprep
+    const mealPrepRecipes = filterByType(recipes, "meal-prep");
+    const sixPortions = filterByPortions(mealPrepRecipes, 6);
+    const fourPortions = filterByType(mealPrepRecipes, 4);
+
     //#endregion
 
     setMeals(meals);
@@ -59,7 +66,24 @@ const filterByType = (recipes: Recipe[], type: RecipeType): Recipe[] => {
       {
         Name: "",
         Type: [],
-        Yield: 0,
+        Portions: 0,
+      },
+    ];
+    return emptyRecipes;
+  }
+};
+
+const filterByPortions = (recipes: Recipe[], portions: number): Recipe[] => {
+  const filtered = recipes.filter((recipe) => recipe.Portions === portions);
+
+  if (filtered.length > 0) {
+    return filtered;
+  } else {
+    const emptyRecipes: Recipe[] = [
+      {
+        Name: "",
+        Type: [],
+        Portions: 0,
       },
     ];
     return emptyRecipes;
