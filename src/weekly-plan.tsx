@@ -18,6 +18,11 @@ export const weeklyPlan: WeeklyPlan = {
 
     const saturday = meals["Saturday"];
     const sunday = meals["Sunday"];
+    const monday = meals["Monday"];
+    const tuesday = meals["Tuesday"];
+    const wednesday = meals["Wednesday"];
+    const thursday = meals["Thursday"];
+    const friday = meals["Friday"];
 
     //#region weekend
     const weekendRecipes = filterByType(recipes, "weekend");
@@ -48,8 +53,17 @@ export const weeklyPlan: WeeklyPlan = {
     //#region mealprep
     const mealPrepRecipes = filterByType(recipes, "meal-prep");
     const sixPortions = filterByPortions(mealPrepRecipes, 6);
-    const fourPortions = filterByType(mealPrepRecipes, 4);
+    const fourPortions = filterByPortions(mealPrepRecipes, 4);
 
+    if (monday.Lunch.locked === false) {
+      monday.Lunch.recipeName = sixPortions[0].Name;
+      wednesday.Lunch.recipeName = sixPortions[0].Name;
+      friday.Lunch.recipeName = sixPortions[0].Name;
+    }
+    if (tuesday.Lunch.locked === false) {
+      tuesday.Lunch.recipeName = fourPortions[0].Name;
+      thursday.Lunch.recipeName = fourPortions[0].Name;
+    }
     //#endregion
 
     setMeals(meals);
