@@ -26,6 +26,8 @@ export const weeklyPlan: WeeklyPlan = {
 
     //#region weekend
     const weekendRecipes = filterByType(recipes, "weekend");
+    const weekdayRecipes = filterByType(recipes, "weekday");
+    weekendRecipes.concat(weekdayRecipes);
     const weekendLunchRecipes = filterByType(weekendRecipes, "lunch");
     const weekendDinnerRecipes = filterByType(weekendRecipes, "dinner");
 
