@@ -30,7 +30,7 @@ export const weeklyPlan: WeeklyPlan = {
     );
 
     meals["Monday"].Lunch.recipeName = mealPreps[0].Name;
-    //if has leftovers... blablabla
+    //if has Yield... blablabla
     meals["Wednesday"].Lunch.recipeName = mealPreps[0].Name;
     meals["Friday"].Lunch.recipeName = mealPreps[0].Name;
 

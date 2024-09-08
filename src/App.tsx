@@ -21,10 +21,10 @@ function App() {
       <h1>Meals</h1>
 
       <button onClick={generate}>Generate</button>
-
+      <br></br>
       <br></br>
 
-      <table border="1">
+      <table border={1}>
         <thead>
           <tr>
             <th>Day</th>

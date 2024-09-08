@@ -31,13 +31,13 @@ const initWeeklyMeals = (): WeeklyMeals => {
   };
 
   return {
+    Saturday: _.cloneDeep(emptyMeal),
+    Sunday: _.cloneDeep(emptyMeal),
     Monday: _.cloneDeep(emptyMeal),
     Tuesday: _.cloneDeep(emptyMeal),
     Wednesday: _.cloneDeep(emptyMeal),
     Thursday: _.cloneDeep(emptyMeal),
     Friday: _.cloneDeep(emptyMeal),
-    Saturday: _.cloneDeep(emptyMeal),
-    Sunday: _.cloneDeep(emptyMeal),
   };
 };
 
