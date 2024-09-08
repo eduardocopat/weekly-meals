@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import useStore, { MealType } from "./store";
+import {useRecipes, type MealType } from "./RecipesProvider";
 import { weeklyPlan } from "./weekly-plan";
 
 function App() {
-  const { meals, toggleLock, setMeals, reset } = useStore();
+  const { meals, toggleLock, setMeals, reset } = useRecipes();
 
   useEffect(() => {
     reset();

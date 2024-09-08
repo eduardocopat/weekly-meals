@@ -1,5 +1,5 @@
 import allRecipes, { Recipe, RecipeType } from "./recipes";
-import { WeeklyMeals } from "./store";
+import { WeeklyMeals } from "./RecipesProvider";
 
 import _ from "lodash";
 
