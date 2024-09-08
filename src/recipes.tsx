@@ -14,6 +14,7 @@ export interface Recipe {
 
 const mealPrep: Recipe[] = [
   { Name: "Rice+Chicken+Carrots", Type: ["meal-prep"], Portions: 6 },
+  { Name: "Rice+Chicken+BrusselSprouts", Type: ["meal-prep"], Portions: 6 },
   { Name: "Rice+Mince+Carrots", Type: ["meal-prep"], Portions: 6 },
   { Name: "Rice+Mince+Beetroot", Type: ["meal-prep"], Portions: 6 },
   { Name: "Rice+Stroganoff+Corn", Type: ["meal-prep"], Portions: 6 },

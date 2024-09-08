@@ -30,7 +30,7 @@ function App() {
 
   return (
     <>
-      <h1>Meals</h1>
+      <h1>Week meals</h1>
 
       <button onClick={generate}>Generate</button>
       <br></br>

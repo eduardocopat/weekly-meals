@@ -29,15 +29,18 @@ export const weeklyPlan: WeeklyPlan = {
     const weekendLunchRecipes = filterByType(weekendRecipes, "lunch");
     const weekendDinnerRecipes = filterByType(weekendRecipes, "dinner");
 
+    let sundayLeftovers = false;
     if (saturday.Lunch.locked === false) {
       saturday.Lunch.recipeName = weekendLunchRecipes[0].Name;
       if (weekendLunchRecipes[0].Portions > 0)
-        if (sunday.Lunch.locked === false)
+        if (sunday.Lunch.locked === false) {
+          sundayLeftovers = true;
           sunday.Lunch.recipeName = weekendLunchRecipes[0].Name;
+        }
     }
 
-    if (sunday.Lunch.locked === false)
-      sunday.Lunch.recipeName = weekendLunchRecipes[0].Name;
+    if (sunday.Lunch.locked === false && !sundayLeftovers)
+      sunday.Lunch.recipeName = weekendLunchRecipes[1].Name;
 
     if (saturday.Dinner.locked === false) {
       saturday.Dinner.recipeName = weekendDinnerRecipes[0].Name;
@@ -64,6 +67,42 @@ export const weeklyPlan: WeeklyPlan = {
       tuesday.Lunch.recipeName = fourPortions[0].Name;
       thursday.Lunch.recipeName = fourPortions[0].Name;
     }
+    //#endregion
+
+    //#region dinners
+    const dinnerRecipes = _.uniqBy(filterByType(recipes, "dinner"), "Type");
+
+    let leftoversForWednesday = false;
+    let leftoversForThursday = false;
+    if (monday.Dinner.locked === false) {
+      monday.Dinner.recipeName = dinnerRecipes[0].Name;
+      if (wednesday.Dinner.locked == false)
+        if (dinnerRecipes[0].Portions > 0) {
+          wednesday.Dinner.recipeName = dinnerRecipes[0].Name;
+          leftoversForWednesday = true;
+        }
+    }
+
+    if (wednesday.Dinner.locked === false && !leftoversForWednesday)
+      wednesday.Dinner.recipeName = dinnerRecipes[1].Name;
+
+    if (tuesday.Dinner.locked === false) {
+      tuesday.Dinner.recipeName = dinnerRecipes[2].Name;
+      if (thursday.Dinner.locked == false)
+        if (dinnerRecipes[2].Portions > 0) {
+          thursday.Dinner.recipeName = dinnerRecipes[2].Name;
+          leftoversForThursday = true;
+        }
+    }
+
+    if (thursday.Dinner.locked == false && !leftoversForThursday)
+      thursday.Dinner.recipeName = dinnerRecipes[3].Name;
+
+    //Trash friday
+    const fridayRecipes = filterByType(recipes, "friday");
+    if (friday.Dinner.locked == false)
+      friday.Dinner.recipeName = fridayRecipes[0].Name;
+
     //#endregion
 
     setMeals(meals);
