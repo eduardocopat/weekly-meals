@@ -32,7 +32,7 @@ export const weeklyPlan: WeeklyPlan = {
     let sundayLeftovers = false;
     if (saturday.Lunch.locked === false) {
       saturday.Lunch.recipeName = weekendLunchRecipes[0].Name;
-      if (weekendLunchRecipes[0].Portions > 0)
+      if (weekendLunchRecipes[0].Portions > 1)
         if (sunday.Lunch.locked === false) {
           sundayLeftovers = true;
           sunday.Lunch.recipeName = weekendLunchRecipes[0].Name;
@@ -44,7 +44,7 @@ export const weeklyPlan: WeeklyPlan = {
 
     if (saturday.Dinner.locked === false) {
       saturday.Dinner.recipeName = weekendDinnerRecipes[0].Name;
-      if (weekendDinnerRecipes[0].Portions > 0)
+      if (weekendDinnerRecipes[0].Portions > 1)
         if (sunday.Dinner.locked === false)
           sunday.Dinner.recipeName = weekendDinnerRecipes[0].Name;
     }
@@ -77,7 +77,7 @@ export const weeklyPlan: WeeklyPlan = {
     if (monday.Dinner.locked === false) {
       monday.Dinner.recipeName = dinnerRecipes[0].Name;
       if (wednesday.Dinner.locked == false)
-        if (dinnerRecipes[0].Portions > 0) {
+        if (dinnerRecipes[0].Portions > 1) {
           wednesday.Dinner.recipeName = dinnerRecipes[0].Name;
           leftoversForWednesday = true;
         }
@@ -90,7 +90,7 @@ export const weeklyPlan: WeeklyPlan = {
     if (tuesday.Dinner.locked === false) {
       tuesday.Dinner.recipeName = dinnerRecipes[2].Name;
       if (thursday.Dinner.locked == false)
-        if (dinnerRecipes[2].Portions > 0) {
+        if (dinnerRecipes[2].Portions > 1) {
           thursday.Dinner.recipeName = dinnerRecipes[2].Name;
           leftoversForThursday = true;
         }

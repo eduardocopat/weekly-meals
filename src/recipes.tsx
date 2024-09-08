@@ -24,6 +24,7 @@ const mealPrep: Recipe[] = [
   { Name: "Pasta+RedSauce+Meatballs", Type: ["meal-prep"], Portions: 4 },
   { Name: "Noodles+Tofu+Edamame", Type: ["meal-prep"], Portions: 4 },
   { Name: "Pasta+CarneDePanela+Cenoura", Type: ["meal-prep"], Portions: 4 },
+  { Name: "Onigiri", Type: ["meal-prep"], Portions: 6 },
 
   {
     Name: "ChickenCouscous+Feta+Cucumber+Oil+Balsamic",
@@ -43,25 +44,37 @@ const mealPrep: Recipe[] = [
 ];
 
 const weekend: Recipe[] = [
-  { Name: "Rice+Beef+Salad", Type: ["lunch", "weekend"], Portions: 0 },
-  { Name: "Pork+Potato", Type: ["lunch", "weekend"], Portions: 0 },
-  { Name: "[Oven] Chicken+Potato", Type: ["lunch", "weekend"], Portions: 1 },
-  { Name: "Wrap('Fake pizza')", Type: ["dinner", "weekend"], Portions: 1 },
+  { Name: "Rice+Beef+Salad", Type: ["lunch", "weekend"], Portions: 1 },
+  { Name: "Pork+Potato", Type: ["lunch", "weekend"], Portions: 1 },
+  { Name: "[Oven] Chicken+Potato", Type: ["lunch", "weekend"], Portions: 2 },
+  { Name: "Wrap('Fake pizza')", Type: ["dinner", "weekend"], Portions: 2 },
+  { Name: "Risotto", Type: ["dinner", "weekend"], Portions: 2 },
+  { Name: "Onigiri", Type: ["meal-prep"], Portions: 2 },
+  { Name: "Sushi", Type: ["meal-prep"], Portions: 2 },
 ];
 
 const weekdays: Recipe[] = [
-  { Name: "VegetableSoup", Type: ["dinner"], Portions: 1 },
-  { Name: "Ravioli+Molho", Type: ["dinner"], Portions: 1 },
+  { Name: "VegetableSoup", Type: ["dinner"], Portions: 2 },
+  { Name: "Ravioli+Molho", Type: ["dinner"], Portions: 2 },
+  { Name: "Misso+Tofu", Type: ["dinner"], Portions: 2 },
+  { Name: "Pasta+RedSauce", Type: ["dinner"], Portions: 1 },
+  { Name: "Sandwich", Type: ["dinner"], Portions: 1 },
+  { Name: "ImpossibleQuiche", Type: ["dinner"], Portions: 1 },
+  { Name: "VegetablePie", Type: ["dinner"], Portions: 1 },
+  { Name: "Tapioca", Type: ["dinner"], Portions: 1 },
+  { Name: "Bao+Fillings", Type: ["dinner"], Portions: 1 },
   {
     Name: "KumaraEnchilada(Beans+Corn)",
     Type: ["dinner", "weekday"],
-    Portions: 1,
+    Portions: 2,
   },
-  { Name: "Wrap('Fake pizza')", Type: ["dinner", "weekend"], Portions: 1 },
+  { Name: "Wrap('Fake pizza')", Type: ["dinner", "weekend"], Portions: 2 },
 ];
 
 const fridays: Recipe[] = [
-  { Name: "FrozenPizza", Type: ["friday"], Portions: 0 },
+  { Name: "FrozenPizza", Type: ["friday"], Portions: 1 },
+  { Name: "EmpadinhaDeFrango", Type: ["friday"], Portions: 1 },
+  { Name: "Takeaway", Type: ["friday"], Portions: 1 },
 ];
 
 const anythingElse: Recipe[] = [];
