@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       <div className="section">
-        <h1 className="title">Week meals</h1>
+        <h1 className="title">Weekly Meals</h1>
 
         <button className="button is-primary" onClick={generate}>
           Generate
