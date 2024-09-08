@@ -1,4 +1,4 @@
-import allRecipes from "./recipes";
+import allRecipes, { Recipe, RecipeType } from "./recipes";
 import { WeeklyMeals } from "./store";
 
 import _ from "lodash";
@@ -16,24 +16,52 @@ export const weeklyPlan: WeeklyPlan = {
 
     const recipes = _.shuffle(allRecipes);
 
-    //@TODO: create a separate method to filter, because if there aren't any, then return an Empty recipe
-    const weekendRecipes = recipes.filter((recipe) =>
-      //@TODO: move to constants
-      recipe.Type.includes("weekend")
-    );
+    const saturday = meals["Saturday"];
+    const sunday = meals["Sunday"];
 
-    meals["Saturday"].Lunch.recipeName = weekendRecipes[0].Name;
+    //#region weekend
+    const weekendRecipes = filterByType(recipes, "weekend");
+    const weekendLunchRecipes = filterByType(weekendRecipes, "lunch");
+    const weekendDinnerRecipes = filterByType(weekendRecipes, "dinner");
 
-    const mealPreps = recipes.filter((recipe) =>
-      //@TODO: move to constants
-      recipe.Type.includes("meal-prep")
-    );
+    if (saturday.Lunch.locked === false) {
+      saturday.Lunch.recipeName = weekendLunchRecipes[0].Name;
+      if (weekendLunchRecipes[0].Yield > 0)
+        if (sunday.Lunch.locked === false)
+          sunday.Lunch.recipeName = weekendLunchRecipes[0].Name;
+    }
 
-    meals["Monday"].Lunch.recipeName = mealPreps[0].Name;
-    //if has Yield... blablabla
-    meals["Wednesday"].Lunch.recipeName = mealPreps[0].Name;
-    meals["Friday"].Lunch.recipeName = mealPreps[0].Name;
+    if (sunday.Lunch.locked === false)
+      sunday.Lunch.recipeName = weekendLunchRecipes[0].Name;
+
+    if (saturday.Dinner.locked === false) {
+      saturday.Dinner.recipeName = weekendDinnerRecipes[0].Name;
+      if (weekendDinnerRecipes[0].Yield > 0)
+        if (sunday.Dinner.locked === false)
+          sunday.Dinner.recipeName = weekendDinnerRecipes[0].Name;
+    }
+
+    if (sunday.Dinner.locked === false)
+      sunday.Dinner.recipeName = weekendDinnerRecipes[0].Name;
+    //#endregion
 
     setMeals(meals);
   },
+};
+
+const filterByType = (recipes: Recipe[], type: RecipeType): Recipe[] => {
+  const filtered = recipes.filter((recipe) => recipe.Type.includes(type));
+
+  if (filtered.length > 0) {
+    return filtered;
+  } else {
+    const emptyRecipes: Recipe[] = [
+      {
+        Name: "",
+        Type: [],
+        Yield: 0,
+      },
+    ];
+    return emptyRecipes;
+  }
 };
