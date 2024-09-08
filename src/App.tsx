@@ -28,64 +28,78 @@ function App() {
   return (
     <>
       <div className="container">
-        <h1 className="title">Hello Bulma!</h1>
-        <button className="button is-primary">Click Me</button>
+        <div className="columns is-vcentered is-centered">
+          <div className="column is-half">
+            <h1 className="title">Week meals</h1>
+
+            <button className="button is-light" onClick={generate}>
+              {" "}
+              Generate
+            </button>
+            <br></br>
+            <br></br>
+
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">Day</th>
+                  <th scope="col">Lunch</th>
+                  <th scope="col">Dinner</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.keys(meals).map((key) => {
+                  const meal = meals[key];
+
+                  return (
+                    <tr key={key}>
+                      <td>{key}</td>
+                      <td>
+                        <input
+                          type="checkbox"
+                          checked={meal.Lunch.locked}
+                          onChange={() => toggleLock(key, "Lunch")}
+                        />
+                        <input
+                          type="text"
+                          className="input"
+                          value={meal.Lunch.recipeName}
+                          onChange={(event) => {
+                            handleManualNameChange(
+                              key,
+                              "Lunch",
+                              event.target.value
+                            );
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="checkbox"
+                          checked={meal.Dinner.locked}
+                          onChange={() => toggleLock(key, "Dinner")}
+                        />
+                        <input
+                          type="text"
+                          className="input"
+                          value={meal.Dinner.recipeName}
+                          onChange={(event) => {
+                            handleManualNameChange(
+                              key,
+                              "Dinner",
+                              event.target.value
+                            );
+                          }}
+                        />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-
-      <h1 className="title">Week meals</h1>
-
-      <button onClick={generate}>Generate</button>
-      <br></br>
-      <br></br>
-
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">Day</th>
-            <th scope="col">Lunch</th>
-            <th scope="col">Dinner</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.keys(meals).map((key) => {
-            const meal = meals[key];
-
-            return (
-              <tr key={key}>
-                <td>{key}</td>
-                <td>
-                  <input
-                    type="checkbox"
-                    checked={meal.Lunch.locked}
-                    onChange={() => toggleLock(key, "Lunch")}
-                  />
-                  <input
-                    type="text"
-                    value={meal.Lunch.recipeName}
-                    onChange={(event) => {
-                      handleManualNameChange(key, "Lunch", event.target.value);
-                    }}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="checkbox"
-                    checked={meal.Dinner.locked}
-                    onChange={() => toggleLock(key, "Dinner")}
-                  />
-                  <input
-                    type="text"
-                    value={meal.Dinner.recipeName}
-                    onChange={(event) => {
-                      handleManualNameChange(key, "Dinner", event.target.value);
-                    }}
-                  />
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
     </>
   );
 }
