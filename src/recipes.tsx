@@ -49,8 +49,20 @@ const weekend: Recipe[] = [
   { Name: "[Oven] Chicken+Potato", Type: ["lunch", "weekend"], Portions: 2 },
   { Name: "Wrap('Fake pizza')", Type: ["dinner", "weekend"], Portions: 2 },
   { Name: "Risotto", Type: ["dinner", "weekend"], Portions: 2 },
-  { Name: "Onigiri", Type: ["meal-prep"], Portions: 2 },
-  { Name: "Sushi", Type: ["meal-prep"], Portions: 2 },
+  { Name: "Onigiri", Type: ["lunch", "weekend"], Portions: 2 },
+  { Name: "Sushi", Type: ["lunch", "weekend"], Portions: 2 },
+  { Name: "FamilySpinachBaconPie", Type: ["lunch", "weekend"], Portions: 2 },
+  { Name: "Polenta+Egg", Type: ["lunch", "weekend"], Portions: 1 },
+  {
+    Name: "ProsciuttoWrappedChickenRoulade",
+    Type: ["lunch", "weekend"],
+    Portions: 1,
+  },
+  {
+    Name: "HazelnutPearChicken",
+    Type: ["lunch", "dinner", "weekend"],
+    Portions: 2,
+  },
 ];
 
 const weekdays: Recipe[] = [
@@ -60,9 +72,10 @@ const weekdays: Recipe[] = [
   { Name: "Pasta+RedSauce", Type: ["dinner"], Portions: 1 },
   { Name: "Sandwich", Type: ["dinner"], Portions: 1 },
   { Name: "ImpossibleQuiche", Type: ["dinner"], Portions: 1 },
-  { Name: "VegetablePie", Type: ["dinner"], Portions: 1 },
+  { Name: "VegetablePie", Type: ["dinner"], Portions: 2 },
   { Name: "Tapioca", Type: ["dinner"], Portions: 1 },
-  { Name: "Bao+Fillings", Type: ["dinner"], Portions: 1 },
+  { Name: "Bao+Fillings", Type: ["dinner"], Portions: 2 },
+  { Name: "SmokyBrothyBeans", Type: ["dinner"], Portions: 2 },
   {
     Name: "KumaraEnchilada(Beans+Corn)",
     Type: ["dinner", "weekday"],
