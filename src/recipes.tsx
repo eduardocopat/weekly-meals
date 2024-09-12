@@ -19,6 +19,7 @@ const mealPrep: Recipe[] = [
   { Name: "Rice+Mince+Beetroot", Type: ["meal-prep"], Portions: 6 },
   { Name: "Rice+Stroganoff+Corn", Type: ["meal-prep"], Portions: 6 },
   { Name: "Rice+Lentil+Carrot", Type: ["meal-prep"], Portions: 6 },
+  { Name: "Rice+Chicken+GreenBeans", Type: ["meal-prep"], Portions: 6 },
 
   { Name: "Pasta+RedSauce+Corn", Type: ["meal-prep"], Portions: 4 },
   { Name: "Pasta+RedSauce+Meatballs", Type: ["meal-prep"], Portions: 4 },
