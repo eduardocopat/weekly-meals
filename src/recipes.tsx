@@ -54,6 +54,7 @@ const weekend: Recipe[] = [
   { Name: "Sushi", Type: ["lunch", "weekend"], Portions: 2 },
   { Name: "FamilySpinachBaconPie", Type: ["lunch", "weekend"], Portions: 2 },
   { Name: "Polenta+Egg", Type: ["lunch", "weekend"], Portions: 1 },
+  { Name: "HomemadePizza", Type: ["weekend"], Portions: 2 },
   {
     Name: "ProsciuttoWrappedChickenRoulade",
     Type: ["lunch", "weekend"],
