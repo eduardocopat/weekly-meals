@@ -76,6 +76,8 @@ const weekdays: Recipe[] = [
   { Name: "ImpossibleQuiche", Type: ["dinner"], Portions: 1 },
   { Name: "VegetablePie", Type: ["dinner"], Portions: 2 },
   { Name: "Tapioca", Type: ["dinner"], Portions: 1 },
+  { Name: "Hamburger proteico de atum", Type: ["dinner"], Portions: 1 },
+  { Name: "Quibe de abobora", Type: ["dinner"], Portions: 1 },
   { Name: "Bao+Fillings", Type: ["dinner"], Portions: 2 },
   { Name: "SmokyBrothyBeans", Type: ["dinner"], Portions: 2 },
   {
