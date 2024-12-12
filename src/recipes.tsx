@@ -55,6 +55,7 @@ const weekend: Recipe[] = [
   { Name: "FamilySpinachBaconPie", Type: ["lunch", "weekend"], Portions: 2 },
   { Name: "Polenta+Egg", Type: ["lunch", "weekend"], Portions: 1 },
   { Name: "HomemadePizza", Type: ["weekend"], Portions: 2 },
+  { Name: "Moqueca", Type: ["weekend", "dinner"], Portions: 2 },
   {
     Name: "ProsciuttoWrappedChickenRoulade",
     Type: ["lunch", "weekend"],
@@ -80,6 +81,7 @@ const weekdays: Recipe[] = [
   { Name: "Quibe de abobora", Type: ["dinner"], Portions: 1 },
   { Name: "Bao+Fillings", Type: ["dinner"], Portions: 2 },
   { Name: "SmokyBrothyBeans", Type: ["dinner"], Portions: 2 },
+  { Name: "Lamb+Rice+Zuchini", Type: ["dinner"], Portions: 2 },
   {
     Name: "KumaraEnchilada(Beans+Corn)",
     Type: ["dinner", "weekday"],
